@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+
+        .container{
+            width: 1000px;
+            height: 1000px;
+        }
+
+        .apple{
+            /* 고정 */
+            position:static;
+            left:100px;
+            top:100px;
+        }
+
+        .banana{
+            /* 상대위치 */
+            position:relative;
+            left: 400px;
+            top: 100px;
+        }
+
+        .melon{
+            /* 절대위치 */
+            position:absolute;
+            left: 300px;
+            top: 100px;
+        }
+
+        .mother{
+            position:relative;
+        }
+
+        .mother>div{
+            position:absolute;
+            left: 20px;
+            top:20px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .father{
+            position: relative;
+        }
+
+        .father>div{
+            position:absolute;
+            right: 20px;
+            bottom:20px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .parent{
+            position: relative;
+        }
+
+        .parent>div{
+            position: absolute;
+            left:50%;
+            top:50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .quick{
+            /* 브라우저를 기준으로 위치고정 */
+            position: fixed;
+            right:30px;
+            bottom:30px;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="top">
+        <div class="apple">사과</div>
+        <div class="banana">바나나</div>
+        <div class="melon">멜론</div>
+
+        <div class="mother">
+            <div></div>
+        </div>
+        <div class="father">
+            <div></div>
+        </div>
+        <div class="parent">
+            <div></div>
+        </div>
+    </div>
+
+    <div class="quick">
+        <a href="#top">↑</a>
+    </div>
+</body>
+</html>

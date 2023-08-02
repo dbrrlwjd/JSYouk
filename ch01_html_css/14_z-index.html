@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z-index</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;            
+        }
+
+        .apple{
+            background-color: red;
+            position: relative;
+            z-index: 3;
+        }
+
+        .banana{
+            background-color: yellow;
+
+            position: relative;
+            left: 100px;
+            bottom: 100px;
+            z-index: 2;
+        }
+
+        .melon{
+            background-color: greenyellow;
+
+            position: relative;
+            left: 200px;
+            bottom: 200px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="apple">사과</div>
+    <div class="banana">바나나</div>
+    <div class="melon">멜론</div>
+</body>
+</html>

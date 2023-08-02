@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display</title>
+
+    <style>
+        h3{
+            background-color: yellow;
+            /* inline은 width, height, margin 등 같이 적용되지 않는 태그가 많아 다루기 불편함 */
+            display: inline-block;
+        }
+
+        img{
+            /* 화면의 한 줄을 전부 차치, 실제로 차지하는 영역 외에는 마진으로 채워져 있다 */
+            display: block;
+        }
+
+        #stamp{
+            /* 화면상에 존재하지 않도록 함 */
+            /* display: none; 영역이 남지 않음*/
+            /* visibility: hidden; 영역이 남음*/
+            opacity: 0; /*투명화*/
+        }
+
+        #stamp:hover{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 각 태그별로 display 기본 설정이 다름 -->
+    <!-- div, h, p 등은 1줄을 전부 차지(display:block) -->
+    <!-- input, image, span 등은 본인의 영역만 차지(display:inline) -->
+    <h3>2023년 8월 2일</h3>
+    <h3>날씨: 폭염</h3>
+    <h2>연준이의 일기</h2>
+    <div>
+        <img src="https://i.namu.wiki/i/SeaPbImAwUE5a1xp8jCzSOiNtb5H9meaAdQ7rifvSWJKqjTUtG9y0HglsvIMQ9-dE3D0M51aN9ysBdRmN3WzcIi551cQQH0Kij5spIV9D3Td466G2uQ4tzpIH1YMHnbZ4qdQwxSkvCXUnghDTETx4Q.webp" alt="">
+    </div>        
+    <div>
+        오늘은 평양냉면을 먹었는데 맛이 없었다. 역시 냉면은 함흥냉면~~
+    </div>
+
+    <div>        
+        <img id="stamp" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI8AAAB5CAMAAAA3doKlAAAAbFBMVEX///8AAAD6+vr09PTf39/39/fm5ubt7e3a2trw8PDOzs7q6urIyMhEREQqKirLy8t7e3t1dXWhoaGSkpLU1NS4uLiwsLBra2tKSkrAwMCHh4ebm5swMDBVVVWnp6djY2MjIyM7OzsODg4XFxcYFqS/AAAMO0lEQVR4nO1baXfjKgxFeF+DjReMjcH2//+PT2AnTZp0ZpqmfV+qc2aSeONaaLkSlJBf+ZVfuZfgfx4/miP32cT7bx3/j2BQIg3SfrbQxyQOCZu886lkSH4YS9YKETcQWhX5vSQcZqKG8+kGhj/c/A3SA4DwEgMaf9BZMr9apMkv57uC/gCK4W1AEk4zyVb8kgDors5mMS/2dO1bu46hO67zvPvnfFWCYPedAd58qJuU8PWI2pHD0CWklqTiBOdtKWNKm7LZL+PLMr4cTy+E775Acz6E6qF1x7j9npeqIrVO8ynAK8LZKFWo/TJvaQaIXo0ni9ciiNGduT4f4n3Q6qm0eDzV+Up2CnJJCeD0bCe/Vbv9jAzjwPxKLNSP/coPV21w7NyEZ4hZLIZB7niUWIC3gGOTgoXeFpF4xxNtDP91Hz78CQnFItB7N+Wi3XqZMELjaindq/vt0Kxm4+uYkKQwYslIc+ApQVbQvhIPSrKVJF3dU7s3W8gBUuIf715DBH46WVPJLUbUT8M94gkNwF8MJwJtrAffpYMag1C9fx3921OdICcoc60JndKXogkaU5/Aj4i0ptMsxVXkDUP/g7sEanNQCnhYq9dGxnCRZJrKwgsyfHCS5//kvc2ev4YC4KXW7CReY5IO21N2mdZGnF6MZxaEj8XQiacYTja/modg6i5A0fink/ZHwgJCw8ms7Cdy9r/KoJu/X/Qrv/JQ0JL/LRD+jAQiImJ5dZ5+XnyYRgXF7bG4+d8qQDaBLSjeDiRdVa6gWZj9L3iquQRYL3hoJmAXs4R/uu/b8HQlLPnB0UloLBTV1qP9lP8Lnm0N40M/GceKywLCoM2+gf/9C552NFlT7KUdwoHUqqiyvxCQkuHjzBb5B2Gj/mtTX9Xhg5udWmVoStB01nh4y+QEK5Sg3pPSmTEprRf0vmfLa/ZiPMQ2CVwAajcEdCLysOjihFBDDjekK+vhShqlZ/3wuV/CE+94ZDlbPIMdae3njCStNCW7VpA3XsOBzWQk7F5Zxzs8RO94+tZWOoGA1QyUpGwBjJbXV8cKbkXTU1y8kkfXzql797/sUDWCI1PnbZrPbsBbRtrBe1nWZDQvNOkA7MNicHi4w2A4RzVMKkdtwW2UNnd4oJOwPMBD4+KpRprn8GTOgPg+gqvGTokoJyERD07cpRaT93hgTh9lFn+PGU/g2QcabbW6S05afiBoofMmDcYbdkrrl/cTdkdWTpSE1fuZ/lehR1MJPMI2XuN4DQ7axzYIwBQqMYM+jaWyUebUttO9ft7XYP0SWDU+S2H4jmdqCCv8NGvYYJbGlun9kGWe9acSi/geKyMXB2Bie8Zd123Hc1sMRN0KQnSwPlsjyB1PJwhblUE/C5uQI91A126s6yuNUEi01cTpZotJ0Cndszj2i92gb3gAHmNpQkv4LB7kN37sn6pYuXCWQCwxaxT24X3ZNbalmBJagU8YzlU2TZ7TS1X3FUbklrHmUBgmjvry1A4Yml6gP13cU10ypc0KA9vvLDgHq6osOPh039MAHcontbWdFGoXC41YCjSNUSjl8YsNnSN056w4wJxSfJLOUSVbr4Gi8+c9ufvTME78NF/8tB5VR0RPdjxJOTr99MQL4oEMnA+2S7Q6OGf65G9ulqKiKj5L5qhqiLdZa6RyV1BdkBOHdYQWIxKDrahhDtFsLB5865k7dTDfThrplXKhiR4gnQTF8S4SPs0tqeUR0jl2K+iuIPvIAM22sq8IW7kSbkeqZVXUpJPE5lJNPVpXdsVnnyNxNV/6aANIqB+O+UfRmDgLxwCj0mXw8GhyeDMyjcATRRu2zmvH0kxGL+h68ejC3NR7+8BeFBVnPH2Qwx5F/Wd4ZWxSkmu3SEFm+yAe5sD3YU5oGKyuORdbZjMclkNxyyZr5QPGKWo22JcX9NmeA9KZ9vw+6zM0N4c4FzYCE9tllfhSsEyGN0eHu5lLNK7FKq7qMzuQv4PQiqJFB57TULWjQS3aRLzD8Q166adTqc8UqXSFVY3V8QicFZ3n5WZZz3wniXntzIId1towWzWeMD8shVa2Px0441mrlGQL9LvKfDuv3qfdC7OSKhsCsbaJxlqBe0IWYhTMb4vT7pwZG7vmQ6TwuGhrq40WJFt1TpJxubg8qpokPXy2As/NINBaIPJs9EX3vnCYUV87qy2cz4w93hxkU8bQs5HEnZ1ANLB4upRqoXPIaBJ6+ySJnTqr34ai4eAMjeaq9tuO1OMV7cm25euyZX5AW7HuEDFO66HX6IXuN7d5rQq1Z5G5sByVpvlsfj/l5xamdN4FyeUB8ohqIzPCRRIbCDH+qdPlDsztbJ9Weib40qpu9yx6gkB/llSnR0+jqZ1J9xcLIOeMoYd49hGQD2lL5schbkYvrObOuDnll2sm9p6H/B2PcTOcApNWx93R5PDyWRze2rfuvIGPmXCICdZa24SmhMX2JYeyksEnFw/xzWMML+q4LegNJq4oqoDvljgItzAZ+Dl8mKr5NnHHBToQSSHeGKqKSfXZxcx0KaDOL1SByAU0FhXpsbI7FOVuL84BaehbuQ0r4XRmFZhjlrNHJD5NUTn8icXVZLmp5Ri/adNzJGRkYJMN2c26CBRzY0VxefmqLs2ZaEPbNyybnlnsDW5CH/VuCyk5N33fOU9hRUZplNXrtYZGc36MdLTQSsOgmFi7iPUFi8/zTSakop9m6jAPlkN7ajE3YaU4fsULbGecK0iaEH+s1RfwJG34AE8I/KitOjvwuNcT29Waci/NPAzo7ZfZCs/UJ7mrgz4h6GttHzf5AjdR/uxXnY0u81tBerlgNMZRjvKiCwbR7mVHnfmkpEBtW9PAo0gz2Dx13Umoqv5IaVlI/DR9K5hr8NnkcOkv4cmOu6d3xW+ArJm7/H7T91GD6h/2NHI0n6KxLf/lS22z8MDT3jQBqAaFVYZR3XwYz1k0+ZAi+7B4TTJ8qeXv9eoBnrSCzvL2SN706PYChyGevH3QzKRYRJlFf2GrQBwrTe/xtNBego3P3+ORszXeCasmEr9TFTIoTvxnm3iWdF7Iz6DPrZ5YqRuHrW/wCGKzrr/22gy5gferHR+t3f+TnGojd/VkTIA+D/9uSdUrbgDlkcjIYOx2KVVsL1598TZbR3iy6PODBc333S3/Fk8iIuZsmpLwUb/uS2L7vYnpMVHV3T72g6WL8ArOFnoim9muTds+WF8LqOfeeBUwevHojU8XOL2PBbxng5I9nmF9/GINNTBeTVC85o8uouyAs9peo/U9CmHL4nJ8+XbJDODtDYPqoyWAIw5hekjcDskapr6Cb9gAmC1XLtp+2KqN22KvJIhXWjzMfh30N+z7u86jLXy8z8jWfjbytosFsfO3b4BzI+2DUsUbjknRrmVE2Et31v1ZOnV/zD9W7LLFNSrDl+9k+4N4D+qbROzEf9bSBu4QHnrgz0lXuJDkTbup8/LPl3+3zJu2Gslhry/yP1j8l8Tym1r/NX7Ma0grkSnQvfWrcBV/u+NJsaFt2P6yWSvMl8E10GGgcd+fTttTtd4/4akwDsq/rMjOO/egvcONJEx/284F267L1F98pbypyoL0O+Of14F2zcePlxsovD4/fYxnkZ3jOm+D5u/V9YNw5DYScNvrXOJ2eYKrdnkQfofu1Zsx72QsN07CbbENxFEHodpR9EqqOzxyWq5IWj8flNlr4teR5/CElsOlZzuTXX856nmnu3TgTz5xLJtGxAuxDl32IFEYI14aG+lyLMeVMnXvTwGm5Y4+Z6YYXVDOQbqUql3RlWPBX740tbr1d2Q/XTea/ZU7kGN3Z8MNg8WSpGye204Hg3B4uMLo9NK9r9QGFy07RBBZSwioN47sUQphPWlmq6K4X9WiHAGqy3n5hl1LNWOidGPl5TSpdpjvY96JwwJLRXUBDE/XLmYHWDcORTu8Pr3SXBud0yAMvZxJvd0QCq2GZer9xCOer7AwDfSy7qyZ9hVOZP/EeuDfpSm0bf8IrVUT31BWnxVzkEXcbsvxpxRnLJTqaFNj+Pre7Z1Dns/39WDuii+b1yslpfSxPrWVEYPxm+k8ha7j9385kPM43VdXBo7iU81sn5d//8byAir2oP5tS2BN+xaM55/anegJ3fN7PEMP2vRvplL/2G5J75Q+LMjj9NrIP/yDkV/5lV/5lV/5lV/5RvkP8yq5TkIMkl0AAAAASUVORK5CYII=" alt="">
+    </div>
+    <div>
+        <h4>저도 냉면 먹고 싶네요</h4>
+    </div>
+</body>
+</html>

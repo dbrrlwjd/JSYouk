@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input태그</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <input type="text" value="" placeholder="아이디 입력">
+    <input type="button" value="클릭" onclick="">
+    <button onclick="">
+        <img src="../resources/images/android-icon-36x36.png" alt="">
+    </button>
+
+    <hr>
+
+    <input type="file">
+    
+    <hr>
+
+    남<input type="radio" name="gender" value="male" checked> 여<input type="radio" name="gender" value="female">
+
+    <hr>
+
+    자신있는과목 (중복체크 가능) <br>
+    JAVA <input type="checkbox" name="favor" value="java" checked>
+    SQL <input type="checkbox" name="favor" value="sql">
+    HTML <input type="checkbox" name="favor" value="html">
+
+    <hr>
+
+    이 사이트를 어떻게 알게 되었나요?<br>
+    <select name="" id="">
+        <option value="internet">인터넷 검색</option>
+        <option value="friend">친구 추천</option>
+        <option value="etc" selected>기타</option>
+    </select>
+
+    <hr>
+
+    <!-- 30글자 10줄 -->
+    <!-- resize:none을 넣어주면 크기 조절 불가 -->
+    <textarea name="" id="" cols="10" rows="1"></textarea>
+
+    <!-- 개발작 ㅏ백엔드에서 사용할 값을 사용자에게 노출하지 않는 용도 -->
+    <input type="hidden" name="id" value="superman">
+
+    <hr>
+
+    좋아하는 색 선택<br>
+    <input type="color">
+
+    <hr>
+
+    학교 졸업일자<br>
+    <input type="date">
+
+    <hr>
+
+    경력<br>
+    <input type="number">
+
+    <hr>
+
+    음량 <input type="range" min="0" max="100"><br>
+    마이크볼륨 <input type="range" min="0" max="100" step="10">
+
+
+</body>
+</html>
