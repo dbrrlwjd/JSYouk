@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+
+            border-width: 1px;
+            border-style: solid;
+            border-color: black;
+
+            /* border-top: 2px dashed red; */
+        }
+
+        .shadow{
+            /* 박스-그림자: 가로 세로 번짐 크기 색 */
+            box-shadow: 2px 2px 2px 2px gray;
+        }
+
+        .radius{
+
+            /* 테두리를 둥글게 */
+            border-radius: 10px;
+        }
+
+        .profile{
+            border-radius: 50px;
+
+            /* div태그에 이미지 넣기 */
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf_Smbsm9c9jNWdqKrq4pqge6nJdSQD5kbPA&usqp=CAU");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* 테두리(border)의 영역 이해하기 */
+        .triangle{
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 86px solid red;
+            border-left: 50px solid rgba(0,0,0,0);
+            border-right: 50px solid #ffffff00;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div class="shadow"></div>
+    <div class="radius"></div>
+    <div class="profile"></div>
+    <div class="triangle"></div>
+</body>
+</html>
