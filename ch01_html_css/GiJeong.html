@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>넥도날드</title>
+
+    <style>
+        body {
+            background-color: black;
+        }
+
+        div {
+            border: 1px solid red;
+        }
+
+        .container {
+            width: 1000px;
+        }
+
+        .container div {
+            margin: 5px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .site-name {
+            color: orange;
+            font-size: 30px;
+        }
+
+        .nav-bar {
+            color: white;
+            display: flex;
+        }
+
+        .nav-bar p {
+            margin: 10px;
+        }
+
+        .login {
+            background-color: orange;
+            width: 150px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .news {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .news img {
+            width: 500px;
+        }
+
+        .news-right{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .news-title {            
+            color: orange;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .news-content {
+            width: 85%;
+            color: white;
+            text-align: center;
+        }
+
+        .middle{
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu {
+            background-color: white;
+            width: 980px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-title{
+            width: 100%;
+        }
+
+        .menu-lists{
+            width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .menu-list{
+            width: calc(800px/3 - 20px);
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 1px 1px 4px 2px gray;
+            overflow: hidden;
+        }
+
+        .menu-list img{
+            width: 100%;
+        }
+
+        .address > div {
+            width: 36%;
+            color: white;
+            margin-left: auto;
+        }
+
+        .tel{
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="site-name">넥도날드</div>
+            <div class="nav-bar">
+                <p>home</p>
+                <p>메뉴</p>
+                <p>매점찾기</p>
+            </div>
+            <div class="login">로그인/회원가입</div>
+        </div>
+
+        <div class="news">
+            <div class="news-img">
+                <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+            </div>
+            <div class="news-right">
+                <div class="news-title">
+                    빅넥 출시
+                </div>
+                <div class="news-content">
+                    둘이 먹다가 하나 죽어도 아무도 모르는 그 환상의 맛...
+                    100% 순 게 살코기에 해저 치즈, 피클, 상추, 토마토, 양파
+                    그걸 김이 모락모락 나는 참깨빵 사이에 넣어서 먹으면...
+                </div>
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="menu">
+                <div class="news-title menu-title">햄버거 목록</div>
+                <div class="menu-lists">
+                    <div class="menu-list">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <div>빅넥</div>
+                        <div>4,000월</div>
+                    </div>
+                    <div class="menu-list">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <div>빅넥</div>
+                        <div>4,000월</div>
+                    </div>
+                    <div class="menu-list">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <div>빅넥</div>
+                        <div>4,000월</div>
+                    </div>
+                    <div class="menu-list">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <div>빅넥</div>
+                        <div>4,000월</div>
+                    </div>
+                    <div class="menu-list">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <div>빅넥</div>
+                        <div>4,000월</div>
+                    </div>
+                    <div class="menu-list">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <div>빅넥</div>
+                        <div>4,000월</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="address">
+
+            <div>
+                <div>
+                    (34856) 넥스트 IT 교육센터<br>
+                    대전광역시 중구 계룡로 825 (용두동, 희영빌딩 2층)
+                </div>
+                <div class="tel">
+                    Tel. 042-719-8850 Fax. 042-719-8851
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>

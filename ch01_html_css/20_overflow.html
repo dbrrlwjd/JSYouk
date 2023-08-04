@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overflow</title>
+
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            border: 2px solid;
+            margin-bottom: 200px;
+        }
+
+        div img{
+            width: 500px;
+            height: auto;
+        }
+
+        .overflow-scroll{
+            overflow: scroll;
+        }
+
+        .overflow-hidden{
+            overflow: hidden;
+        }
+
+        .d-flex-center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile{
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile img{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000" alt="">
+    </div>
+
+    <div class="overflow-scroll">
+        <img src="https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000" alt="">
+    </div>
+
+    <div class="overflow-hidden">
+        <img src="https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000" alt="">
+    </div>
+
+    <div class="d-flex-center">
+        <img src="https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000" alt="">
+    </div>
+
+    <div class="profile">
+        <img src="https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000" alt="">
+    </div>
+</body>
+</html>
