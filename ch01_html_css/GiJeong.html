@@ -7,25 +7,32 @@
     <title>넥도날드</title>
 
     <style>
-        body {
-            background-color: black;
-        }
-
         div {
             border: 1px solid red;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: black;
         }
 
         .container {
             width: 1000px;
         }
 
-        .container div {
-            margin: 5px;
+        .container>div{
+            margin-top: 5px;
         }
 
         .top {
+            width: calc(1000px - 5px);
+            height: 50px;
+            position: fixed;
+            background-color: black;
             display: flex;
             justify-content: space-between;
+            cursor: pointer;
         }
 
         .site-name {
@@ -34,12 +41,13 @@
         }
 
         .nav-bar {
-            color: white;
             display: flex;
         }
 
-        .nav-bar p {
+        .nav-bar a {
+            color: white;
             margin: 10px;
+            text-decoration: none;
         }
 
         .login {
@@ -49,6 +57,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .login:hover{
+            cursor: pointer;
+            text-decoration: underline;
         }
 
         .news {
@@ -61,49 +74,48 @@
             width: 500px;
         }
 
-        .news-right{
+        .news-right {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        .news-title {            
+        .news-title {
             color: orange;
             font-size: 30px;
             text-align: center;
         }
 
         .news-content {
-            width: 85%;
+            width: 84%;
             color: white;
             text-align: center;
         }
-
-        .middle{
+/* 
+        .middle {
             display: flex;
             justify-content: center;
-        }
+        } */
 
         .menu {
             background-color: white;
-            width: 980px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        .menu-title{
+        .menu-title {
             width: 100%;
         }
 
-        .menu-lists{
+        .menu-lists {
             width: 800px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
         }
 
-        .menu-list{
+        .menu-list {
             width: calc(800px/3 - 20px);
             text-align: center;
             border-radius: 20px;
@@ -111,17 +123,21 @@
             overflow: hidden;
         }
 
-        .menu-list img{
+        .menu-list img {
             width: 100%;
         }
 
-        .address > div {
-            width: 36%;
-            color: white;
-            margin-left: auto;
+        .address {
+            background-color:rgb(0, 0, 50);
+            display: flex;
         }
 
-        .tel{
+        .address-right>div {
+            color: white;
+            margin: 10px;
+        }
+
+        .tel {
             font-size: 10px;
         }
     </style>
@@ -132,12 +148,14 @@
         <div class="top">
             <div class="site-name">넥도날드</div>
             <div class="nav-bar">
-                <p>home</p>
-                <p>메뉴</p>
-                <p>매점찾기</p>
+                <a href="GiJeong.html">home</a>
+                <a href="#m-id">메뉴</a>
+                <a href="#a-id">매점찾기</a>
             </div>
             <div class="login">로그인/회원가입</div>
         </div>
+
+        <div style="height: 50px;"></div>
 
         <div class="news">
             <div class="news-img">
@@ -155,56 +173,69 @@
             </div>
         </div>
 
-        <div class="middle">
+        <div class="middle" id="m-id">
             <div class="menu">
                 <div class="news-title menu-title">햄버거 목록</div>
                 <div class="menu-lists">
                     <div class="menu-list">
-                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg"
+                            alt="">
                         <div>빅넥</div>
-                        <div>4,000월</div>
+                        <div>4,000원</div>
                     </div>
                     <div class="menu-list">
-                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg"
+                            alt="">
                         <div>빅넥</div>
-                        <div>4,000월</div>
+                        <div>4,000원</div>
                     </div>
                     <div class="menu-list">
-                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg"
+                            alt="">
                         <div>빅넥</div>
-                        <div>4,000월</div>
+                        <div>4,000원</div>
                     </div>
                     <div class="menu-list">
-                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg"
+                            alt="">
                         <div>빅넥</div>
-                        <div>4,000월</div>
+                        <div>4,000원</div>
                     </div>
                     <div class="menu-list">
-                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg"
+                            alt="">
                         <div>빅넥</div>
-                        <div>4,000월</div>
+                        <div>4,000원</div>
                     </div>
                     <div class="menu-list">
-                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg" alt="">
+                        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.jpg"
+                            alt="">
                         <div>빅넥</div>
-                        <div>4,000월</div>
+                        <div>4,000원</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="address">
-
+        <div class="address" id="a-id">
             <div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3214.4037712945037!2d127.40526707631298!3d36.32676289424345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356549343eea9def%3A0xbce1e1d49463ebe8!2z64Sl7Iqk7Yq47JWE7J207Yuw6rWQ7Jyh7IS87YSw7ZWZ7JuQ!5e0!3m2!1sko!2skr!4v1691042876998!5m2!1sko!2skr"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="address-right">
                 <div>
-                    (34856) 넥스트 IT 교육센터<br>
+                    (34856) 넥스트 IT 교육센터 
                     대전광역시 중구 계룡로 825 (용두동, 희영빌딩 2층)
                 </div>
                 <div class="tel">
                     Tel. 042-719-8850 Fax. 042-719-8851
                 </div>
             </div>
-            
+
         </div>
     </div>
 </body>

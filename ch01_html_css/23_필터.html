@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필터</title>
+
+    <style>
+        img {
+            width: 400px;
+        }
+
+        .f-blur {
+            filter: blur(5px);
+        }
+
+        .f-contrast {
+            filter: contrast(150%);
+        }
+
+        .f-grayscale {
+            filter: grayscale(70%);
+        }
+
+        .f-brightness {
+            filter: brightness(50%)
+        }
+
+        .f-custom {
+            filter: brightness(50%) contrast(200%);
+        }
+
+        .item-box {
+            width: 1300px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .item-box>img:hover {
+            filter: blur(0px) brightness(150%);
+        }
+
+        .btn {
+            background-color: orange;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-radius: 15px;
+            justify-content: center;
+            align-items: center;
+            display: inline-flex;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .btn:hover {
+            filter: brightness(90%);
+        }
+
+        html{
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;            
+        }
+    </style>
+</head>
+
+<body>
+    블러
+    <div>
+        <img src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-blur" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+    </div>
+
+    대조
+    <div>
+        <img src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-contrast" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+    </div>
+
+    흑백
+    <div>
+        <img src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-grayscale" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+    </div>
+
+    밝기
+    <div>
+        <img src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-brightness" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+    </div>
+
+    <div>
+        <img src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-custom" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+    </div>
+
+    <div class="item-box">
+        <img class="f-blur" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-blur" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-blur" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-blur" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-blur" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+        <img class="f-blur" src="https://www.navercorp.com/img/ko/og/logo.png" alt="">
+    </div>
+
+    <div class="btn">로그인/회원가입</div>
+</body>
+
+</html>
