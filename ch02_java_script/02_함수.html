@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <button onclick="whoAmI()">내가 누구?</button>
+    <button onclick="whoAreYou()">너는 누구?</button>
+    <button onclick="ranNum(1, 45)">로또번호 생성</button>
+
+    <script>
+        function whoAmI(){
+            alert("개발자!!")
+        }
+
+        const whoAreYou = function() {
+            alert("개발자");
+        }
+
+        let welcome = () => { 
+            document.write("환영합니다.");
+        }
+
+        welcome();
+
+        // 로또번호 1~46생성
+        console.log(Math.random()*45);
+
+        console.log(Math.floor(Math.random()*11)+10);
+
+        function ranNum(a, b){
+            alert(Math.floor(Math.random()*(b-a+1)) + a);
+        }
+
+        
+    </script>
+</body>
+</html>

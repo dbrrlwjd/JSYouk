@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document객체</title>
+
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 2px solid;
+            background-color: aqua;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <p id="count">0</p>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box" style="width: 300px; height: 300px;"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <br>
+    <button onclick="f_click()">클릭</button>
+
+    <script>
+        function f_click(){
+            // DOM객체 (Document Object Model)
+            let v_ptag = document.getElementById('count');
+            console.log(++v_ptag.innerHTML);
+        }
+
+        function f_rgbColor(){
+            return "rgb("
+            + Math.floor(Math.random()*256) + ", "
+            + Math.floor(Math.random()*256) + ", "
+            + Math.floor(Math.random()*256)
+            + ")";
+        }
+
+        console.log(f_rgbColor());
+    </script>
+</body>
+</html>
