@@ -13,9 +13,14 @@
             background-color: aqua;
             display: inline-block;
         }
+
+        .title{
+            background-color: yellow;
+        }
     </style>
 </head>
 <body>
+    <h2 class="title">색이 변한 횟수</h2>
     <p id="count">0</p>
     <div class="box"></div>
     <div class="box"></div>
@@ -26,16 +31,40 @@
     <button onclick="f_click()">클릭</button>
 
     <script>
+        let v_box = document.getElementsByClassName("box");
+        console.log(v_box);
+        console.log(v_box[0]);
+
+        // 해당 태그에 적용된 스타일 꺼내보기
+        console.log(v_box[0].style.width);
+        console.log(v_box[2].style.width);
+        v_box[2].style.backgroundColor = "rgb(255,0,0)";
+        console.log(v_box[2].style.backgroundColor);
+
+        // 클래스가 하나뿐인 태그 불러오기
+        let v_title = document.getElementsByClassName('title');
+
+        // CSS로 적용된 스타일 가져오기
+        console.log(v_title[0].style.backgroundColor);
+        let css_title=getComputedStyle(v_title[0]);
+        console.log(css_title.backgroundColor);
+        
+
         function f_click(){
             // DOM객체 (Document Object Model)
             let v_ptag = document.getElementById('count');
             console.log(++v_ptag.innerHTML);
+
+            let v_boxes = document.getElementsByClassName('box');
+            for(let i=0;i<v_boxes.length;i++){
+                v_boxes[i].style.backgroundColor = f_rgbColor();
+            }
         }
 
         function f_rgbColor(){
             return "rgb("
-            + Math.floor(Math.random()*256) + ", "
-            + Math.floor(Math.random()*256) + ", "
+            + Math.floor(Math.random()*256) + ","
+            + Math.floor(Math.random()*256) + ","
             + Math.floor(Math.random()*256)
             + ")";
         }

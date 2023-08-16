@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inpout태그</title>
+
+    <style>
+        tr>td:nth-child(1) {
+            width: 150px;
+            background-color: aquamarine;
+        }
+
+        tr>td:nth-child(2) {
+            width: 250px;
+            background-color: azure;
+        }
+
+        input[type=text],
+        input[type=password] {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>회원가입</h2>
+    <table>
+        <tr>
+            <td>아이디</td>
+            <td><input id="inputID" type="text"></td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><input id="InputPW" type="password"></td>
+        </tr>
+        <tr>
+            <td>비밀번호 재입력</td>
+            <td><input id="rePW" type="password"></td>
+        </tr>
+        <tr>
+            <td>성별</td>
+            <td>
+                남성<input type="radio" name="gender" value="male">
+                여성<input type="radio" name="gender" value="female">
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호 힌트</td>
+            <td>
+                <select name="" id="hint">
+                    <option value="school">나의 초등학교 이름은?</option>
+                    <option value="nick">어릴 적 별명은?</option>
+                    <option value="treasure">내 보물 1호는?</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>사이트 방문 사유</td>
+            <td>
+                지인<input type="checkbox" value="friend" name="reason">
+                직장<input type="checkbox" value="job" name="reason">
+                검색<input type="checkbox" value="search" name="reason">
+                기타<input type="checkbox" value="etc" name="reason">
+            </td>
+        </tr>
+        <tr>
+            <td>생년월일</td>
+            <td><input type="date" id="inputDate"></td>
+        </tr>
+        <tr>
+            <td>좋아하는 색</td>
+            <td><input type="color" id="inputColor"></td>
+        </tr>
+    </table>
+    <button onclick="f_regist()">회원가입</button>
+    <h2 id="result"></h2>
+
+    <script>
+        const v_id = document.getElementById("inputID");
+        const v_password = document.getElementById("InputPW");
+        const v_rePW = document.getElementById('rePW');
+        const v_gender = document.getElementsByName('gender');
+        const v_hint = document.getElementById('hint');
+        const v_reason = document.getElementsByName('reason');
+        const v_date = document.getElementById('inputDate');
+        const v_color = document.getElementById('inputColor');
+        let v_result = document.getElementById('result');
+
+        function f_regist() {
+            let reasonStr='';
+            let genderStr='';
+
+            console.log(v_id.value);
+            console.log(v_password.value);
+
+            for (let i = 0; i < v_gender.length; i++) {
+                if (v_gender[i].checked) {
+                    genderStr = v_gender[i].value=="male" ? "남성" : "여성";
+                }
+            }
+
+            console.log(v_hint.value);
+
+            let reasonChecked = ["지인", "직장", "검색", "기타"];
+            let ch = [];
+            for (let i = 0; i < v_reason.length; i++) {
+                if (v_reason[i].checked) {
+                    ch.push(reasonChecked[i]);
+                }
+            }
+
+            for (let i = 0; i < ch.length; i++) {
+                if(ch.length>1 && i>0){
+                    reasonStr += ", ";
+                }
+                reasonStr += ch[i];
+            }
+
+            console.log(v_date.value);
+            console.log(v_color.value);
+
+            if(v_password.value==v_rePW.value){
+                console.log('o');
+            } else{
+                console.log('x');
+            }
+
+            let colorStr = '\"color:'+v_color.value+'\"';
+            
+            v_result.innerHTML="입력한 아이디: " + v_id.value
+                                + ",<br> 입력한 비밀번호: " + v_password.value
+                                + ",<br> 성별은 " + genderStr
+                                + ",<br> 사이트 방문 사유 " + reasonStr + " 입니다"
+                                + ",<br> 좋아하는 색은 <span style=" + colorStr + ">" + v_color.value + "</span> 입니다.";            
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표준몸무게</title>
+
+    <style>
+        .container {
+            width: 600px;
+            height: 350px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px 4px skyblue;
+            padding: 50px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .main>* {
+            margin-bottom: 30px;
+        }
+
+        .main>div {
+            width: 45%;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .container input[type='text'] {
+            width: 100%;
+            height: 25px;
+            margin-top: 15px;
+            border-radius: 5px;
+            box-shadow: -2px -2px 0px 1px black;
+            box-shadow: 2px 2px 0px 1px gainsboro;
+        }
+
+        .container button {
+            width: 100%;
+            padding: 10px;
+
+            background-color: blue;
+            color: white;
+
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .container>div:nth-child(2)>h1{
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <h1>표준 체중 계산기</h1>
+            <div>
+                키(cm):<br><input id="tall" type="text">
+            </div>
+            <div>
+                체중(kg):<br><input id="weight" type="text">
+            </div>
+            남성<input type="radio" name="gender" value="male">
+            여성<input type="radio" name="gender" value="female">
+            <button onclick="f_calc()">계산하기</button>
+        </div>
+        <div>
+            <h1 class="result"></h1>
+            <h1 class="result"></h1>
+        </div>
+    </div>
+
+    <script>
+        const v_container = document.getElementsByClassName('main');
+        const v_tall = document.getElementById('tall');
+        const v_weight = document.getElementById('weight');
+        const v_gender = document.getElementsByName('gender');
+        const v_result = document.getElementsByClassName('result');
+
+        function f_calc() {
+            v_container[0].style.display = 'none';
+            let v_height= parseInt(v_tall.value) / 100;
+            let avgWeight=0;
+            let fat;
+            let fatStr;
+            
+            for (let i = 0; i < v_gender.length; i++) {
+                if (v_gender[i].checked) {
+                    avgWeight = v_height*v_height*(v_gender[i].value=="male" ? 22 : 21);
+                }
+            }
+
+            fat = v_weight.value/avgWeight*100;
+
+            if (fat<90){
+                fatStr = "저체중";
+            } else if (fat<110){
+                fatStr = "정상 체중";
+            } else if (fat<120){
+                fatStr = "과체중";
+            } else if(fat<130){
+                fatStr = "경도 비만";
+            }else if(fat<130){
+                fatStr = "중정도 비만";
+            }else{
+                fatStr = "고도 비만";
+            }
+
+            v_result[0].innerHTML = "적합한 표준 체중은 " + Math.round(avgWeight) + "kg 이며,";
+            v_result[1].innerHTML = "현재 비만도는 " + fatStr + "입니다.";
+        }
+    </script>
+</body>
+
+</html>

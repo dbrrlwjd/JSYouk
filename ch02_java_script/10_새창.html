@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>새창</title>
+</head>
+<body>
+    <h2 id="result">결제금액: 53,000</h2>
+    <button onclick="f_pay()">결제하기</button>
+
+    <script>
+        function f_pay(){
+            // 새창 열기
+            // window.open(a, b,c );
+            // a: URL / b: 창이름 / c: 크기와 위치
+            window.open("./11_pin.html", "네이버", 
+                        "width=400,height=600,left=400,top=0")
+        }
+
+        function f_check(p_pin){
+            if(p_pin=='123456'){
+                document.getElementById("result").innerHTML += "<br>결제가 완료되었습니다.";
+            } else{
+                document.getElementById("result").innerHTML += "<br>틀림";
+            }
+        }
+    </script>
+</body>
+</html>

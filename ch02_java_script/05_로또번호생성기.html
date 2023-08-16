@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또번호 생성기</title>
+
+    <style>
+        .d-flex {
+            display: flex;
+        }
+
+        .d-flex>div {
+            width: 100px;
+            height: 100px;
+            border: 2px solid;
+            font-size: 40px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <h2 id="result"></h2>
+
+    <script>
+        let boxes = document.getElementsByClassName('box');
+
+        let numArray = [];
+        for (let i = 0; i < 6; i++) {
+            let num = Math.floor(Math.random() * 45) + 1;
+            if (numArray.indexOf(num) == -1) {
+                numArray[i] = num;
+            } else {
+                i--;
+            }
+        }
+
+        console.log(numArray);
+        numArray.sort(function (a, b) {
+            return a - b;
+        });
+        console.log(numArray);
+
+        const winRotto = [4,8,18,24,37,45];
+        let resultN=0;
+        for (let i = 0; i < boxes.length; i++) {
+            boxes[i].innerHTML = numArray[i];
+            if (winRotto.indexOf(numArray[i])!=-1){
+                boxes[i].style.backgroundColor=f_rgbColor();
+                resultN++;
+            }
+        }
+        
+        function f_rgbColor(){
+            return "rgb("
+            + Math.floor(Math.random()*256) + ","
+            + Math.floor(Math.random()*256) + ","
+            + Math.floor(Math.random()*256)
+            + ")";
+        }
+
+        document.getElementById("result").innerHTML=resultN+ "개 일치합니다.";
+    </script>
+</body>
+
+</html>

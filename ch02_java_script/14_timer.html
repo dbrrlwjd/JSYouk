@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer</title>
+</head>
+<body>
+    <div id="clock"></div>
+    <button onclick="f_stop()">정지</button>
+
+    <script>
+        const v_clock = document.getElementById('clock');
+
+        function f_showTime(){
+            let v_date = new Date();
+
+            console.log("년 : " + v_date.getFullYear());
+            console.log("월 : " + (v_date.getMonth()+1));
+            console.log("일 : " + v_date.getDate());
+            console.log("요일 : " + v_date.getDay());
+            console.log("시 : " + v_date.getHours());
+            console.log("분 : " + v_date.getMinutes());
+            console.log("초 : " + v_date.getSeconds());
+
+            v_clock.innerHTML = f_timeFormat(v_date.getHours()) + ':'
+                            + f_timeFormat(v_date.getMinutes()) + ':' 
+                            + f_timeFormat(v_date.getSeconds());
+
+            //setTimeout(f_showTime, 1000);
+        }
+
+        function f_timeFormat(time){
+            return time<10 ? '0'+time : time;
+        }
+
+        let v_timer = setInterval(f_showTime, 1000);
+
+        function f_stop(){
+            clearInterval(v_timer);
+        }
+        
+    </script>
+</body>
+</html>

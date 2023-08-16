@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pin번호</title>
+
+    <style>
+        .container {
+            width: 400px;
+            height: 600px;
+        }
+
+        .container>div:nth-child(1) {
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input[type=password] {
+            border: 0;
+            font-size: 60px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .container>div:nth-child(2) {
+            height: 60%;
+            background-color: #2DB400;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .keypad>div {
+            width: calc(100% / 3);
+            height: calc(100%/4);
+            background-color: #2DB400;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;
+        }
+
+        .keypad>div:hover {
+            filter: brightness(90%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h2>비밀번호 입력</h2>
+            <input id="inputPin" type="password" readonly>
+        </div>
+        <div class="keypad">
+            <div class="btn">1</div>
+            <div class="btn">2</div>
+            <div class="btn">3</div>
+            <div class="btn">4</div>
+            <div class="btn">5</div>
+            <div class="btn">6</div>
+            <div class="btn">7</div>
+            <div class="btn">8</div>
+            <div class="btn">9</div>
+            <div class="btn">취소</div>
+            <div class="btn">0</div>
+            <div class="btn">초기화</div>
+        </div>
+    </div>
+
+    <script>
+        const v_pin = document.getElementById("inputPin");
+        const v_btn = document.getElementsByClassName("btn");
+
+        for (let i = 0; i < v_btn.length; i++) {
+            v_btn[i].addEventListener("click", function () {
+                if (v_btn[i].innerHTML == "초기화") {
+                    v_pin.value = '';
+                }  else if (v_btn[i].innerHTML == "취소"){
+                    let s = v_pin.value;
+                    v_pin.value = s.substr(0, s.length-1);
+                } else {
+                    v_pin.value += v_btn[i].innerHTML;
+                }
+
+                if(v_pin.value.length==6){
+                    f_finish();
+                }
+            });
+        }
+
+        function f_finish(){
+            // 현재 창을 연 부모 html에 접근하여 pin.value 보내기
+            opener.document.getElementById('result').innerHTML = v_pin.value;
+            opener.f_check(v_pin.value);
+            window.close();
+        }
+    </script>
+</body>
+
+</html>

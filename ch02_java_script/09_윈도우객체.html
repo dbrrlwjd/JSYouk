@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우객체</title>
+
+    <script>
+        // document객체가 사용가능해지는 시점에 실행
+        // img태그 등의 src 리소스 등이 완전히 로드되기 전에 실행될 가능성이 있음
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const v_box = document.getElementById('box');
+        //     v_box.style.width = "100px";
+        //     v_box.style.height = "100px";
+        //     v_box.style.border = "1px solid black";
+        // });
+
+        // 현재 문서가 전부 읽어진 후에 실행
+        // 위에보다 늦게 실행
+        window.onload = function(){
+            const v_box = document.getElementById('box');
+            v_box.style.width = "100px";
+            v_box.style.height = "100px";
+            v_box.style.border = "1px solid black";
+        };
+
+        let temp="임시";
+    </script>
+</head>
+
+<body>
+
+
+    <div id="box"></div>
+
+    <script>
+        // script태그는 분리되어 존재해도 하나
+        console.log(temp);
+
+        // window객체는 현재 브라우저 창에 대한 객체
+        window.console.log('난 윈도우 객체 소속이야');
+
+        /* 웹 사이트의 라이프 사이클
+        1.DOM
+        2.window.onload
+        3.사이트 이용
+        4.window.onbeforeunload
+        5.window.unload
+        */
+
+        window.onbeforeunload = function(){
+            //뭐라고 적든 고정된 문구 출력
+            return "진짜 갈꺼야?";
+        }
+
+        window.unload = function(){
+            // 현재 상황을 저장하는 기능을 넣는 편이다.
+            alert("가지마!!");
+        }
+
+        /*안드로이드 어플 라이프 사이클
+        1.onCreate : 앱 실행 시
+        2.onStart : onCreate 직후
+        3.onResume : 현재 앱이 메인이 될때
+        4.앱 이용
+        5.onPause : onStop 직전
+        6.onStop : 앱이 백그라운드로 갈때
+        7.onDestroy : 앱이 완전히 종료될때
+        */
+    </script>
+</body>
+
+</html>

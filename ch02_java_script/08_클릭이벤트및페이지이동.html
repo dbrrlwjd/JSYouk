@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클릭&페이지</title>
+    <link rel="stylesheet" href="../resources/css/myStyle.css">
+    <style>
+        .d-flex div {
+            width: 100px;
+            cursor: pointer;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex">
+        <div onclick="f_naver()">네이버</div>
+        <div id="google">구글</div>
+        <div id="daum">다음</div>
+        <a href="https://www.yutube.com">
+            <div>유튜브</div>
+        </a>
+        <div id="overflow">오버플로우</div>
+    </div>
+
+    <script>
+        function f_naver(){            
+            window.open("https://naver.com");
+        }
+
+        let v_google = document.getElementById('google');
+        v_google.onclick = function() { //해당 태그에 onclick 속성이 있어야 함
+            window.location.href = "https://www.google.com";
+        }
+
+        let v_daum = document.getElementById('daum');
+        v_daum.addEventListener("click", function(){
+            window.location.replace("https://www.daum.net");
+        });
+
+        document.getElementById('overflow')
+                .addEventListener("click", () => {
+            location.href="../ch01_html_css/20_overflow.html";
+        });
+    </script>
+</body>
+
+</html>

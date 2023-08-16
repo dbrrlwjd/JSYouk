@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타이머게임</title>
+
+    <style>
+        .container{
+            width: 400px;
+            height: 400px;
+
+            border: 1px solid black;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="f_click()">
+        <h1 id="count">0</h1>
+    </div>
+
+    <script>
+        const v_count = document.getElementById('count');
+        let correctTime;
+        let clickTime;
+
+        let v_sec=0;
+        function f_count(){            
+            v_sec++;
+            
+            if(v_sec<6){
+                v_count.innerHTML = parseInt(v_count.innerHTML) + 1;
+            } else{
+                v_count.innerHTML = "?";
+            }
+
+            if(v_sec==15){
+                correctTime = new Date();
+            }
+
+            if(v_sec==18){
+                let v_diff = clickTime-correctTime;
+                v_count.innerHTML = (v_diff/1000) + "초";
+                return;
+            }
+
+            setTimeout(f_count, 1000);
+        }
+
+        function f_click(){
+            clickTime = new Date();
+
+            document.getElementsByClassName('container')[0].style.backgroundColor = "greenYellow";
+        }
+
+        setTimeout(f_count, 1000);
+    </script>
+</body>
+</html>

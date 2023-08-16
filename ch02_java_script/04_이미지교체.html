@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 교체</title>
+</head>
+<body>
+    <img id="myImg" width="500px" height="400px" src="../resources/images/202209190759-2186fcdb-daf6-4020-91d8-d340ccdb8228.png" alt="">
+    <br>
+    <button onclick="f_changeImage()">이미지 교체</button>
+
+    <script>
+        let imgArray = ["images.png", 
+                        "202209190759-2186fcdb-daf6-4020-91d8-d340ccdb8228.png", 
+                        "다운로드.png"];
+        let index=0;
+        function f_changeImage(){
+            let myImg = document.getElementById('myImg');
+            myImg.src = "../resources/images/"+imgArray[index++ % 3];
+        }
+    </script>
+</body>
+</html>
