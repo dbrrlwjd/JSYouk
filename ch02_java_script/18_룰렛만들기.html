@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>룰렛</title>
+
+    <style>
+        .container {
+            width: 800px;
+            height: 600px;
+            border: 1px solid black;
+            margin: auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container>div {
+            height: 80%;
+            position: relative;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            border-top: 40px solid red;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid rgba(0, 0, 0, 0);
+            border-right: 10px solid #ffffff00;
+        }
+
+        .btn {
+            width: 90px;
+            height: 90px;
+            border-radius: 45px;
+            background-color: red;
+            color: white;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <img id="roulette" height="100%" src="../resources/images/1688634747851.png" alt="">
+            <div class="triangle"></div>
+            <div class="btn" onclick="f_start()">start</div>
+        </div>
+    </div>
+
+    <script>
+        const v_btn = document.getElementById('roulette');
+        let v_deg = 0;
+        let is_running = false;
+        let v_speed=20;
+        let v_count=0;
+        let v_ranN;
+
+        function f_start() {
+            if (!is_running) {
+                is_running=true;
+                v_ranN = Math.floor(Math.random()*37) + 200;
+                f_rotate();
+            }
+        }
+
+        function f_rotate() {
+            v_count++;
+            v_deg += 10;
+            v_btn.style.transform = "rotate(" + v_deg + "deg)";
+            if(v_count > 140){
+                v_speed += 2;
+            }
+            if(v_count>v_ranN){
+                return;
+            }
+            setTimeout(f_rotate, v_speed);
+        }
+    </script>
+</body>
+
+</html>

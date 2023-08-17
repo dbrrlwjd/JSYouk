@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+        }
+
+        .container>div {
+            margin: 10px;
+        }
+
+        #timerStr{
+            margin: 0;
+        }
+
+        #bar{
+            width: 200px;
+            height: 30px;
+            border: 1px solid black;
+        }
+
+        .timer {
+            width: 100%;
+            height: 100%;
+            background-color: blue;
+        }
+
+        img{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="timerStr"></h1>
+        <div id="bar">
+            <div class="timer"></div>
+        </div>
+        <img onclick="f_reset()" width="30" height="30" src="data:image/png;base64,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" alt="">
+    </div>
+    
+    <script>
+        const v_timer = document.getElementsByClassName('timer');
+        const v_timerStr = document.getElementById('timerStr');
+        let v_count=30;
+        let ci;
+
+        function f_counting(){
+            v_timerStr.innerHTML = '00:' + (v_count<10 ? '0'+v_count : v_count);
+            v_timer[0].style.width = 'calc((100% / 30) * ' + (v_count) + ')';            
+            if(v_count==0){
+                return;
+            }
+            v_count--;
+        }
+
+        function f_reset(){
+            v_count=30;
+            clearInterval(ci);
+            ci = setInterval(f_counting, 1000);
+        }
+
+        ci = setInterval(f_counting, 1000);
+    </script>
+</body>
+</html>

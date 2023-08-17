@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+
+    <style>
+        .container{
+            width: 1000px;
+            border: 1px solid black;
+            margin: auto;
+        }
+
+        .container > div{
+            height: 300px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 20px;
+        }
+
+        #roulette{
+            transform: rotate(0deg);
+        }
+
+        #coin{
+            width: 150px;
+            height: 150px;
+            background-color: gold;
+            border: 10px solid goldenrod;
+            border-radius: 150px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 60px;
+            color: goldenrod;
+            font-weight: bold;
+
+            transform: rotateY(deg);
+        }
+
+        #earth{
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            background-color: blue;
+            margin-right: 30px;
+        }
+
+        #moon{
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: yellow;
+
+            /* 회전축 위치 설정 (기본값 : center center) */
+            transform-origin: -90px center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <img id="roulette" onclick="f_rotate()" height="300px" src="../resources/images/1688634747851.png" alt="">
+        </div>
+        <div>
+            <div id="coin" onclick="f_rotateY()">$</div>
+        </div>
+        <div>
+            <div id="earth"></div>
+            <div id="moon" onclick="f_moon()"></div>
+        </div>
+    </div>
+
+    <script>
+        const v_roulette = document.getElementById('roulette');
+        let v_deg = 0;
+
+        function f_rotate(){
+            v_deg += 10;
+            v_roulette.style.transform = "rotate(" + v_deg + "deg)";
+            setTimeout(f_rotate, 50);
+        }
+
+        const v_coin = document.getElementById('coin');
+        let c_deg = 0;
+
+        function f_rotateY(){
+            c_deg += 5;
+            v_coin.style.transform = 'rotateY(' + c_deg + 'deg)';
+            setTimeout(f_rotateY, 20);
+        }
+
+        const v_moon = document.getElementById('moon');
+        let m_deg = 0;
+
+        function f_moon(){
+            m_deg += 1;
+            v_moon.style.transform = 'rotateZ(' + m_deg + 'deg)';
+            setTimeout(f_moon, 30);
+        }
+    </script>
+</body>
+</html>
