@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스이벤트</title>
+
+    <style>
+        .container{
+            width: 500px;
+            height: 500px;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #myImg{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- onmousewheel: 현재 태그의 마우스 커서가 놓여있는 상태로 마우스 휠을 굴렸을 때 실행 -->
+        <!-- onmouseover: 현재 태그 위에 마우스 커서가 놓이면 실행 -->
+        <!-- onmousedown/up : 눌렀을 때/뗏을 때 -->
+        <!-- onmousemove: 움직이면 실행 -->
+        <!-- onmouseout: 벗어나면 실행 -->
+        <img id="myImg" 
+        onmousewheel="f_wheel()" onmouseover="f_over()"
+        onmousedown="f_down()" onmouseup="f_up()"
+        onmousemove="f_move()" onmouseout="f_out()" draggable="false"
+        height="800px" src="https://marketplace.canva.com/EADxVVGbAJs/3/0/1131w/canva-%EB%B9%A8%EA%B0%84%EC%83%89-%EB%B6%93%EC%9E%90%EA%B5%AD-%ED%9D%91%EB%B0%B1-%EC%82%AC%EC%A7%84-%EA%B7%B8%EB%9F%B0%EC%A7%80%ED%95%9C-%EC%97%AC%EC%9E%90-%EC%98%81%ED%99%94-%ED%8F%AC%EC%8A%A4%ED%84%B0-xcIVqgNWjxg.jpg" alt="">
+    </div>
+
+    <script>
+        const v_img = document.getElementById('myImg');
+
+        function f_wheel(){
+            if(event.deltaY<0){
+                v_img.height += 20;
+            } else{
+                if (event.target.height<=100){
+                    return
+                }
+                event.target.height -= 20;
+            }
+        }
+
+        function f_over(){
+            event.target.style.cursor = "grab";
+        }
+
+        function f_move(){
+            if(v_isDown == false){
+                return;
+            }
+            let diffX = event.clientX - x;
+            let diffY = event.clientY - y;
+            let v_top = event.target.style.top;
+            let v_left = event.target.style.left;
+
+            event.target.style.top = diffY + "px";
+            event.target.style.left = diffX + "px";
+        }
+
+        let v_isDown = false;
+        let x = 0;
+        let y = 0;
+        function f_down(){
+            v_isDown = true;
+            event.target.style.cursor = "grabbing";
+            x = event.clientX;
+            y = event.clientY;
+        }
+
+        function f_up(){
+            v_isDown = false;
+            event.target.style.cursor = "grab";
+        }
+
+        function f_out(){
+            v_isDown = false;
+        }
+    </script>
+</body>
+</html>

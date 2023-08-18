@@ -95,6 +95,29 @@
                 v_speed += 2;
             }
             if(v_count>v_ranN){
+                let present;
+                let degree = v_deg % 360;
+                if(degree<30){
+                    present = "메가박스 2인 패키지";
+                } else if (degree < 90){
+                    present = "기프트카드 1만원권";
+                } else if (degree<150){
+                    present = "5% 할인쿠폰";
+                } else if (degree<210){
+                    present = "10% 할인쿠폰";
+                } else if (degree<270){
+                    present = "아이스 아메리카노";
+                } else if (degree<330){
+                    present = "포테이토L + 콜라1.25L";
+                } else {
+                    present = "메가박스 2인 패키지";
+                }
+                alert(present);
+                is_running = false;
+                v_count = 0;
+                v_speed = 0;
+                v_deg = 0;
+                v_btn.style.transform = "rotate(" + v_deg + "deg)";
                 return;
             }
             setTimeout(f_rotate, v_speed);

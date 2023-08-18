@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달(Modal)창</title>
+
+    <style>
+        /* body {
+            background-image: url("https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=11288959&filePath=L2Rpc2sxL25ld2RhdGEvMjAxNS8wMi9DTFM2OS9OVVJJXzAwMV8wNDQ1X251cmltZWRpYV8yMDE1MTIwMw==&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006");
+            background-repeat: no-repeat;
+            background-size: cover;
+        } */
+        .b-img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            background-color: #ffffffcc;
+            border-radius: 20px;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 80%;
+            height: 80%;
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .btn {
+            height: 50px;
+            background-color: cornflowerblue;
+            border-radius: 10px;
+
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            cursor: pointer;
+        }
+
+        .btn:hover{
+            filter: brightness(90%);
+        }
+
+        .modal{
+            width: 600px;
+            height: 300px;
+            position: absolute;
+
+            top:20%;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            background-color: white;
+            border-radius: 30px;
+
+            display: none;
+        }
+
+        .modal-header{
+            display: flex;
+            justify-content: end;
+        }
+
+        .modal-header>img{
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .black-wall{
+            width: 100%;
+            height: 100%;
+            background-color: #00000055;
+            position: absolute;
+        }
+
+        .d-none{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="b-img" src="https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=11288959&filePath=L2Rpc2sxL25ld2RhdGEvMjAxNS8wMi9DTFM2OS9OVVJJXzAwMV8wNDQ1X251cmltZWRpYV8yMDE1MTIwMw==&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006" alt="">
+    <div class="container">
+        <div class="box">
+            <h2>로그인</h2>
+
+            <div>
+                <label for="inputId">아이디</label><br>
+                <input id="inputId" type="text">
+                <br>
+                <label for="inputPW">비밀번호</label><br>
+                <input id="inputPW" type="text">
+            </div>
+
+            <div class="btn" onclick="f_click()">로그인</div>
+        </div>
+    </div>
+
+    <div class="black-wall d-none" onclick="f_click()"></div>
+
+    <div class="modal">
+        <div class="modal-header">
+            <img onclick="f_click()" width="20px" src="../resources/images/x_106506.png" alt="">
+        </div>
+    </div>
+    <script>
+        const v_modal = document.getElementsByClassName('modal');
+        const v_black = document.getElementsByClassName('black-wall')[0];
+
+        function f_click(){
+            if(!v_modal[0].style.display){
+                v_modal[0].style.display = "none";
+            }
+
+            if(v_modal[0].style.display=="none"){
+                v_modal[0].style.display = "block";
+                v_black.classList.remove('d-none');
+            } else {
+                v_modal[0].style.display = "none";
+                v_black.classList.add('d-none');
+            }
+        }
+    </script>
+</body>
+
+</html>
