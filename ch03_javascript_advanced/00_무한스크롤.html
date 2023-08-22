@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무한스크롤</title>
+
+    <style>
+        .container {
+            width: 400px;
+            border: 1px solid black;
+            margin: auto;
+        }
+
+        .feed {
+            height: 300px;
+            border-radius: 30px;
+            box-shadow: 0px 0px 8px 0px gainsboro;
+            margin: 10px;
+        }
+
+        .feed>div:nth-child(1) {
+            height: 80%;
+            text-align: center;
+        }
+
+        .feed>div:nth-child(2) {
+            height: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="feed">
+            <div>
+                <img height="100%"
+                    src="https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" alt="">
+            </div>
+            <div>
+                <h2>ㄱ우ㅜ교눝ㄴ어여능ㄱ</h2>
+            </div>
+        </div>
+        <div class="feed">
+            <div>
+                <img height="100%"
+                    src="https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" alt="">
+            </div>
+            <div>
+                <h2>ㄱ우ㅜ교눝ㄴ어여능ㄱ</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const v_container = document.getElementsByClassName('container')[0];
+
+        for (let i = 0; i < 5; i++) {
+            // v_container.innerHTML += "<div class='feed'>"
+            //     + "<div>"
+            //     + "<img height='100%' src='https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg'>" +
+            //     "</div>"
+            //     + "<div>"
+            //     + "<h2>ㄱ우ㅜ교눝ㄴ어여능ㄱ</h2>"
+            //     + "</div>"
+            //     + "</div>";
+            f_addFeed();
+        }
+
+        function f_addFeed() {
+            let v_feed = document.createElement('div');
+            v_feed.classList.add('feed');
+            let v_imgDiv = document.createElement('div');
+            let v_h2Div = document.createElement('div');
+            let v_img = document.createElement('img');
+            let v_h2 = document.createElement('h2');
+            v_img.src = "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg";
+            v_img.style.height = "100%";
+            v_h2.innerHTML = "ㄱ우ㅜ교눝ㄴ어여능ㄱ";
+            v_imgDiv.appendChild(v_img);
+            v_h2Div.appendChild(v_h2);
+            v_feed.appendChild(v_imgDiv);
+            v_feed.appendChild(v_h2Div);
+            v_container.appendChild(v_feed);
+        }
+
+
+        window.onscroll = function() {
+            // 스크롤바를 끝까지 내리면 scrollHeight = clientHeight + scrollTop
+            let v_scrollHeight = document.documentElement.scrollHeight;
+            let v_clientHeight = document.documentElement.clientHeight;
+            let v_scrollTop = document.documentElement.scrollTop;
+
+            if(v_scrollHeight == v_clientHeight + Math.floor(v_scrollTop)){
+                for (let i = 0; i < 5; i++) {
+                    f_addFeed();
+                }
+            }
+        }
+
+        // 페이지를 떠나기 전 스크롤을 맨 위로 올려 위치 기록을 바꿈
+        window.addEventListener("unload", function(){
+            window.scrollTo(0,0);
+        });
+    </script>
+</body>
+
+</html>

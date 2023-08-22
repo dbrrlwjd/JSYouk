@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동적태그생성</title>
+
+    <style>
+        .container{
+            width: 500px;
+            height: 900px;
+            margin: auto;
+            border: 2px solid black;
+        }
+
+        .chat{
+            height: 90%;
+            padding-left: 10px;
+            padding-right: 10px;
+            overflow-y: scroll;
+        }
+
+        .chat::-webkit-scrollbar{
+            width: 15px;
+        }
+
+        .chat::-webkit-scrollbar-thumb{
+            background-color: gainsboro;
+            border-radius: 7px;
+        }
+
+        .chat::-webkit-scrollbar-thumb:hover{
+            background-color: gray;
+        }
+
+        .input-box{
+            height: 10%;
+            border-top: 1px solid black;
+            display: flex;
+        }
+
+        .input-box > input[type=text]{
+            width: 80%;
+            height: 90%;
+            border: 0;
+            font-size: 20px;
+        }
+
+        .input-box > button{
+            width: 20%;
+            height: 100%;
+            background-color: yellow;
+        }
+
+        .msg{
+            background-color: yellow;
+            padding-left: 6px;
+            padding-right: 6px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+
+        .msg-box{
+            margin-top: 20px;
+            text-align: end;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="chat"></div>
+        <div class="input-box">
+            <input id="msg" type="text" onkeydown="f_keydown()">
+            <button onclick="f_send()">전송</button>
+        </div>
+    </div>
+
+    <script>
+        const v_chat = document.getElementsByClassName('chat')[0];
+        const v_msg = document.getElementById('msg');
+
+        function f_send(){
+            let v_str = v_msg.value;
+
+            v_chat.innerHTML += "<div class='msg-box'><span class='msg'>" + v_str + "</span></div>";
+            v_msg.value = "";
+
+            v_chat.scrollTop = v_chat.scrollHeight;
+            v_msg.focus();
+        }
+
+        //해당 input태그에 포커스 중일때
+        function f_keydown(){
+            if(event.key=='Enter'){
+                f_send();
+            }
+        }
+    </script>
+</body>
+</html>

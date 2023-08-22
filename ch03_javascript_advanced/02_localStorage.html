@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+</head>
+<body>
+    
+    <script>
+        // localStorage, 브라우저 내 저장공간
+        localStorage.setItem("name", "찬웅쌤");
+        localStorage.setItem("money", '10000');
+        localStorage.setItem("money", 15000);
+        localStorage.money=20000;
+        localStorage["money"] = 25000;
+
+        let v_name = localStorage.getItem("name");
+        let v_money = parseInt(localStorage.money) + 10000;
+        localStorage["money"] = v_money;
+        localStorage.removeItem("money");
+        localStorage.getItem("money"); //Null
+        localStorage.clear();
+
+        let v_jason = {
+            "name":"찬웅쌤",
+            "money":20000
+        };
+
+        localStorage.setItem("data", JSON.stringify(v_jason));
+        let v_stringJSON = localStorage.getItem("data");
+        console.log(v_stringJSON.name);
+        let v_stringToJSON = JSON.parse(v_stringJSON);
+        console.log(v_stringToJSON);
+        console.log(v_stringToJSON.money);
+        v_stringToJSON["money"] += 10000;
+        localStorage.setItem("data", JSON.stringify(v_stringToJSON));
+
+        let v_array = [1,2,3,4,v_jason];
+        localStorage.setItem("arr", JSON.stringify(v_array));
+
+        let v_stringArr = localStorage.getItem("arr");
+        console.log(v_stringArr);
+
+        let v_strToArr = JSON.parse(v_stringArr);
+        console.log(v_strToArr[0]);
+        v_strToArr[4].money += 5000;
+        localStorage.setItem("arr", JSON.stringify(v_strToArr));
+    </script>
+</body>
+</html>

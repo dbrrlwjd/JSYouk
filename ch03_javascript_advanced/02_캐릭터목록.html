@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐릭터목록</title>
+
+    <style>
+        .container {
+            width: 800px;
+            height: 500px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        .slot {
+            height: 80%;
+            display: flex;
+        }
+
+        .character {
+            width: calc(100%/3);
+            height: 100%;
+            border: 1px solid black;
+
+            text-align: center;
+        }
+
+        .menu {
+            height: 20%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            font-size: 20px;
+        }
+
+        .character>img {
+            width: 100%;
+            height: 60%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slot">
+            <div class="character"></div>
+            <div class="character"></div>
+            <div class="character"></div>
+        </div>
+        <div class="menu">
+            <button onclick="f_new()">캐릭터 생성</button>
+        </div>
+    </div>
+
+    <script>
+        const v_chararcter = document.getElementsByClassName('character');
+        let v_array = JSON.parse(localStorage.getItem("character"));
+
+        if(v_array==null){
+            let v_tmp = [];
+            localStorage.setItem("character", JSON.stringify(v_tmp));
+            v_array = localStorage.getItem("character");
+        }
+
+        function f_new() {
+            if (v_array.length == 3) {
+                alert("이미 캐릭터가 최대입니다");
+                return;
+            }
+            location.href = "./02_캐릭터생성.html";
+        }
+
+        function f_draw() {
+            for (let i = 0; i < v_array.length; i++) {
+                let v_img = document.createElement('img');
+                v_img.src = v_array[i]["src"];
+                v_chararcter[i].appendChild(v_img);
+
+                let v_h = "<h2>" + v_array[i]["name"] + "</h2>";
+                v_chararcter[i].innerHTML += v_h;
+
+                let v_btn = document.createElement("button");
+                v_btn.innerHTML = "삭제";
+                v_btn.onclick = function () {
+                    v_array.splice(i, 1);
+                    localStorage.setItem("character", JSON.stringify(v_array));
+                    location.reload();
+                };
+                v_chararcter[i].appendChild(v_btn);
+            }
+        }
+
+        f_draw();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐릭터생성</title>
+
+    <style>
+        .container {
+            width: 800px;
+            height: 600px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .list>img {
+            width: 200px;
+            height: 200px;
+            border: 4px solid black;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .menu {
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="list">
+            <img class="char" src="https://www.dailysecu.com/news/photo/202104/123449_145665_1147.png" alt="">
+            <img class="char"
+                src="https://i.namu.wiki/i/gWhK4SHoCDMtxOXunUt29hdDrfTjQU7rfPkgO15xg2WxS75qOQj1oXbk4WZ22O84tLrSA6IrzEIssv_mEIKwuw.webp"
+                alt="">
+            <img class="char" src="https://img.danawa.com/prod_img/500000/147/615/img/14615147_1.jpg?_v=20220426173016"
+                alt="">
+            <img class="char"
+                src="https://blog.goorm.io/wp-content/uploads/2022/05/%EA%B5%AC%EB%A6%84-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%94%84%EB%A0%8C%EC%A6%88-%EC%BD%94%EB%94%A9%EC%9A%B4%EB%8F%99%ED%9A%8C.png"
+                alt="">
+            <img class="char"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGJDbzid0N3BNw9CmDePrPKqGDaxSwnAOjuLZAo5lArkyqUeuhwI7cWksDsxzL-OCof2w&usqp=CAU"
+                alt="">
+            <img class="char"
+                src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/eXfGgW51usY6AQ6eiB2AVRXo7II.jpg"
+                alt="">
+        </div>
+        <div class="menu">
+            <div>
+                <input id="inputName" type="text" placeholder="캐릭터명">
+                <button onclick="f_confirm()">선택 완료</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const v_char = document.getElementsByClassName('char');
+        const v_name = document.getElementById('inputName');
+        let selectedSrc;
+
+        for (let i = 0; i < v_char.length; i++) {
+            v_char[i].addEventListener("click", function () {
+                selectedSrc = event.target.src;
+                f_init();
+                event.target.style = "border: 4px solid red";
+            })
+        }
+
+        function f_init() {
+            for (let i = 0; i < v_char.length; i++) {
+                v_char[i].style.border = "4px solid black";
+            }
+        }
+
+        function f_confirm() {
+            let v_db = JSON.parse(localStorage.getItem("character"));
+            if (v_db == null) {
+                let v_array = [];
+                let v_json = {};
+                v_json["src"] = selectedSrc;
+                v_json["name"] = v_name.value;
+                v_array.push(v_json);
+                localStorage.setItem("character", JSON.stringify(v_array));
+            } else{
+                let v_json = {};
+                v_json["src"] = selectedSrc;
+                v_json["name"] = v_name.value;
+
+                v_db.push(v_json);
+                localStorage.setItem("character", JSON.stringify(v_db));
+            }
+
+            location.href = "./02_캐릭터목록.html";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드롭다운</title>
+
+    <style>
+        .container{
+            width: 900px;
+            height: 400px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        .nav-bar{
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: beige;
+        }
+
+        .nav-bar a{
+            text-decoration: none;
+            color: black;
+            margin: 10px;
+        }
+
+        .nav-bar > div{
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown{
+            position: relative;
+        }
+
+        .drop-content{
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            background-color: aliceblue;
+            box-shadow: 2px 2px 4px 0px gainsboro;
+
+            display: flex;
+            flex-direction: column;
+            visibility: hidden;
+        }
+
+        .dropdown:hover .drop-content{
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <div>
+                <img height="80px" src="https://blog.kakaocdn.net/dn/XEAGa/btqB10c0bQ1/RZk86MYViwrP4OaBdpfhn0/img.png" alt="">
+            </div>
+            <div>
+                <a href="">회사소개</a>
+                <a href="">오시는길</a>
+                <div class="dropdown">
+                    <a class="dropbtn" href="">찬웅쌤님▼</a>
+                    <div class="drop-content">
+                        <a href="">프로필 수정</a>
+                        <a href="">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
