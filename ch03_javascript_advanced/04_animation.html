@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+
+    <style>
+        .color-box{
+            height: 100px;
+            border: 1px solid black;
+
+            animation-name: changeColor;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+
+            /* animation: changeColor 2s infinite; */
+        }
+
+        @keyframes changeColor {
+            0%{
+                background-color: red;
+            }
+            20%{
+                background-color: orange;
+            }
+            40%{
+                background-color: yellow;
+            }
+            60%{
+                background-color: green;
+            }
+            80%{
+                background-color: blue;
+            }
+            100%{
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="color-box"></div>
+</body>
+</html>
