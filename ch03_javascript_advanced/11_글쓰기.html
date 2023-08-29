@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기</title>
+</head>
+<body>
+    <input type="text">
+    <br>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <br>
+    <button>완료</button>
+
+    <script>
+        const v_title = document.querySelector("input[type=text]");
+        const v_content = document.querySelector("textarea");
+        const v_button = document.querySelector("button");
+        const v_id = sessionStorage.getItem("loginID");
+
+        if(v_id==null){
+            location.href = "./11_login.html";
+        }
+
+        v_button.addEventListener("click", ()=>{
+            console.log(v_title.value);
+            console.log(v_content.value);
+
+            let v_board = JSON.parse(localStorage.getItem("board"));
+
+            let v_json = {};
+            v_json["no"] = v_board[v_board.length-1]["no"] + 1;
+            v_json["title"] = v_title.value;
+            v_json["content"] = v_content.value;
+            v_json["id"] = v_id;
+
+            v_board.push(v_json);
+            localStorage.setItem("board", JSON.stringify(v_board));
+            
+            location.href="./11_게시판목록.html";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h2></h2>
+    <h3></h3>
+    <hr>
+    <div></div>
+
+    <script src="../resources/js/myJs.js"></script>
+    <script>
+        let v_no = getParameter("no");
+        console.log(v_no);
+
+        let v_board = JSON.parse(localStorage.getItem("board"));
+        for (let i = 0; i < v_board.length; i++) {
+            if(v_board[i]["no"]==v_no){
+                document.querySelector('title').innerHTML = v_board[i]["title"];
+                document.querySelector('h2').innerHTML = v_board[i]["title"];
+                document.querySelector('h3').innerHTML = v_board[i]["id"];
+                document.querySelector('div').innerHTML = v_board[i]["content"];
+            }
+        }
+    </script>
+</body>
+</html>

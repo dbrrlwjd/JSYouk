@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더미 데이터 생성</title>
+</head>
+<body>
+    
+    <script>
+        /*  게시글의 데이터구조
+            글번호, 글제목, 작성자, 글내용
+        */
+
+        let v_datas = [];
+
+        let v_json = {};
+        v_json["no"] = 2146;
+        v_json["title"] = "학원 근처 갈만한 식당";
+        v_json["id"] = "a001";
+        v_json["content"] = "점심시간에 메뉴를 고르다가 점심시간이 끝났습니다.";
+        v_datas.push(v_json);
+
+        v_json = {};
+        v_json["no"] = 2147;
+        v_json["title"] = "스프링 프레임워크가 많이 어렵나요?";
+        v_json["id"] = "b001";
+        v_json["content"] = "곧 배울 생각에 심장이 두근거리고 가슴이 떨립니다.";
+        v_datas.push(v_json);
+
+        v_json = {};
+        v_json["no"] = 2147;
+        v_json["title"] = "스프링 프레임워크가 많이 어렵나요?";
+        v_json["id"] = "b001";
+        v_json["content"] = "곧 배울 생각에 심장이 두근거리고 가슴이 떨립니다.";
+        v_datas.push(v_json);
+
+        v_json = {};
+        v_json["no"] = 2147;
+        v_json["title"] = "스프링 프레임워크가 많이 어렵나요?";
+        v_json["id"] = "b001";
+        v_json["content"] = "곧 배울 생각에 심장이 두근거리고 가슴이 떨립니다.";
+        v_datas.push(v_json);
+
+        localStorage.setItem("board", JSON.stringify(v_datas));
+        document.write("생성완료");
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태그의 부모자식 찿기</title>
+
+    <style>
+        .container{
+            width: 600px;
+            height: 600px;
+            margin: auto;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .parent{
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+
+        .parent>div{
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="parent">
+            <div></div>
+            <div id="control"></div>
+            <div></div>
+        </div>
+    </div>
+
+    <script>
+        let v_control = document.querySelector("#control");
+
+        v_control.addEventListener("click",()=>{
+            console.log(v_control.previousElementSibling);
+            v_control.previousElementSibling.style.backgroundColor = "red";
+            v_control.nextElementSibling.style.backgroundColor = "blue";
+            console.log(v_control.parentElement);
+            console.log(v_control.parentNode);
+
+            v_parent = v_control.parentElement;
+            let v_children = v_parent.children;
+            console.log(v_children);
+        });
+    </script>
+</body>
+</html>

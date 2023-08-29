@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 여러개 첨부</title>
+
+    <style>
+        .container {
+            width: 600px;
+            height: 500px;
+            margin: auto;
+        }
+
+        .img-box {
+            width: 400px;
+            height: 300px;
+            margin: auto;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="img-box"></div>
+        <input type="file" accept="image/*" onchange="f_drawImg()" multiple>
+    </div>
+
+    <script>
+        function f_drawImg() {
+            for (let i = 0; i < event.target.files.length; i++) {
+                if (event.target.files[i].type.startsWith("image/*")) {
+                    alert("이미지 파일만 첨부해주세요");
+                    event.target.value = "";
+                    return;
+                }
+            }
+
+            // 첨부된 이미지 파일
+            let v_files = event.target.files;
+            for (let i = 0; i < event.target.files.length; i++) {
+                let v_file = v_files[i];
+                let v_fileReader = new FileReader();
+                v_fileReader.onload = function () {
+                    let v_img = document.createElement("img");
+                    v_img.src = v_fileReader.result;
+                    v_img.style.height = "30%";
+
+                    document.getElementsByClassName("img-box")[0].appendChild(v_img);
+                }
+
+                v_fileReader.readAsDataURL(v_file);
+            }
+        }
+    </script>
+</body>
+
+</html>
