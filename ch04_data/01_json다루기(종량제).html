@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json다루기(종량제)</title>
+    <!-- https://www.data.go.kr/data/15025538/standard.do -->
+
+    <style>
+        .container {
+            width: 800px;
+            height: 800px;
+            margin: auto;
+            border: 1px solid black;
+
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <input id="inputRegion" type="text">
+            <button onclick="f_search()">검색</button>
+        </div>
+        <div id="content"></div>
+    </div>
+
+    <script src="./01_priceJs.js"></script>
+    <script>
+        console.log(priceData);
+
+        let v_records = priceData["records"];
+        console.log(v_records);
+        console.log(v_records[0]["5ℓ가격"]);
+
+        // json객체의 key값을 배열로 가져오기
+        let v_keys = Object.keys(v_records[0]);
+        console.log(v_keys);
+
+        // v_records에서 서울 지역에 해당하는 데이터만 꺼내기
+        // 종량제 봉투 사용대상 : 가정용
+        // 종량제 봉투 용도 : 생활쓰레기
+        // 종량제 봉투 종류 : 규격봉투
+        // 종량제 봉투 처리방식 : 소각용
+        let v_seoul = [];
+        for (let i = 0; i < v_records.length; i++) {
+            if (v_records[i]["시도명"].indexOf("서울특별시") != -1
+                && v_records[i]["종량제봉투사용대상"].indexOf("가정용") != -1
+                && v_records[i]["종량제봉투용도"].indexOf("생활쓰레기") != -1
+                && v_records[i]["종량제봉투종류"] == "규격봉투"
+                && v_records[i]["종량제봉투처리방식"].indexOf("소각용") != -1) {
+                v_seoul.push(v_records[i]);
+            }
+        }
+        console.log(v_seoul);
+
+        // 10리터 봉투 가격이 가장 비싼 구
+        let expensive = 0;
+        let street;
+        for (let i = 0; i < v_seoul.length; i++) {
+            if (expensive < v_seoul[i]["10ℓ가격"]) {
+                expensive = v_seoul[i]["10ℓ가격"];
+                street = v_seoul[i]["시군구명"];
+            }
+        }
+        console.log(street, expensive);
+
+        let area = [];
+        //380원인 구역이 은평구 뿐인가?
+        for (let i = 0; i < v_seoul.length; i++) {
+            if (v_seoul[i]["10ℓ가격"] == 380) {
+                area.push(v_seoul[i]);
+            }
+        }
+        console.log(area);
+
+        //서울지역 데이터 중 10리터 가격평균
+        let sum = 0;
+        for (let i = 0; i < v_seoul.length; i++) {
+            sum += parseInt(v_seoul[i]["10ℓ가격"]);
+        }
+        console.log(sum / v_seoul.length);
+
+        const v_content = document.querySelector("#content");
+        for (let i = 0; i < v_records.length; i++) {
+            if (v_records[i]["종량제봉투사용대상"].indexOf("가정용") != -1
+                && v_records[i]["종량제봉투용도"].indexOf("생활쓰레기") != -1
+                && v_records[i]["종량제봉투종류"] == "규격봉투"
+                && v_records[i]["종량제봉투처리방식"].indexOf("소각용") != -1) {
+                let v_str = "<h3>" + v_records[i]["시도명"];
+                v_str += " | " + v_records[i]["시군구명"];
+                v_str += " | " + v_records[i]["10ℓ가격"];
+
+                v_content.innerHTML += v_str;
+            }
+        }
+
+        function f_search() {
+            let v_keyword = document.querySelector("#inputRegion").value;
+            let v_str="";
+            for (let i = 0; i < v_records.length; i++) {
+                if (v_records[i]["시도명"] == v_keyword
+                    && v_records[i]["종량제봉투사용대상"].indexOf("가정용") != -1
+                    && v_records[i]["종량제봉투용도"].indexOf("생활쓰레기") != -1
+                    && v_records[i]["종량제봉투종류"] == "규격봉투"
+                    && v_records[i]["종량제봉투처리방식"].indexOf("소각용") != -1) {
+                    v_str += "<h3>" + v_records[i]["시도명"];
+                    v_str += " | " + v_records[i]["시군구명"];
+                    v_str += " | " + v_records[i]["10ℓ가격"]
+                    v_str += "</h3>";
+                }
+            }
+            v_content.innerHTML = v_str;
+        }
+    </script>
+</body>
+
+</html>

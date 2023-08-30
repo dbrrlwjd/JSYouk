@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <!-- jQuery CDN(Content Delivery Network) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <style>
+        .container{
+            width: 800px;
+            height: 600px;
+            margin: auto;
+        }
+
+        .row{
+            display: flex;
+        }
+
+        .col-1{
+            width: 10%;
+        }
+
+        .col-7{
+            width: 70%;
+        }
+
+        .col-2{
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>게시판 목록</h2>
+        <hr>
+        <div class="row">
+            <div class="col-1">글번호</div>
+            <div class="col-7">글제목</div>
+            <div class="col-2">작성자</div>
+        </div>
+        <hr>
+        <div id="content">
+
+        </div>
+        <button onclick="f_write()">글쓰기</button>
+        <img id="myImg" src="" alt="">
+    </div>
+
+    <script>
+        /*
+            jQuery는 기존 자바스크립트 코드를 좀 더 간결하게 사용할 수 있도록
+            만들어진 자바스크립트 라이브러리
+            jQuery를 사용하지 않은 코드를 바닐라 자바스크립트라고 부름
+            jQuery로 구현하는 기능들은 전부 바닐라 코드로 구현가능
+        */
+
+        $("h2").css("backgroundColor", "yellow");
+        $("hr").css("borderColor", "red");
+        $("hr").eq(1).css("borderColor", "blue");
+
+        let v_boards = JSON.parse(localStorage.getItem("board"));
+        for (let i = 0; i < v_boards.length; i++) {
+            let v_board = '<div class="row">'+
+                            '<div class="col-1">'+v_boards[i]["no"]+'</div>'+
+                            '<div class="col-7 title">'+v_boards[i]["title"]+'</div>'+
+                            '<div class="col-2">'+v_boards[i]["id"]+'</div>'+
+                        '</div>';
+            //$("#content").html(v_board+$("content").html());
+            $("#content").prepend(v_board);
+        }
+
+        $(".title").css("cursor", "pointer");
+
+        $(".title").on("click", ()=>{
+            console.log($(event.target));
+            console.log($(event.target).parent());            
+            console.log($(event.target).parent().children().eq(0).html());
+            
+            $(location).attr("href", "./11_글보기.html?no=" + $(event.target).parent().children().eq(0).html())
+        });
+
+        $("#myImg").attr("src", "");
+    </script>
+</body>
+</html>
