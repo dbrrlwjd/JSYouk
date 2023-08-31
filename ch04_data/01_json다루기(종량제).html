@@ -22,8 +22,14 @@
 <body>
     <div class="container">
         <div>
+            <select name="" id="selectLitter">
+                <option value="5ℓ가격">5ℓ가격</option>
+                <option value="10ℓ가격">10ℓ가격</option>
+                <option value="20ℓ가격">20ℓ가격</option>
+            </select>
             <input id="inputRegion" type="text">
             <button onclick="f_search()">검색</button>
+            <button id="btnSort" onclick="f_sort()">정렬▼</button>
         </div>
         <div id="content"></div>
     </div>
@@ -85,33 +91,78 @@
         console.log(sum / v_seoul.length);
 
         const v_content = document.querySelector("#content");
-        for (let i = 0; i < v_records.length; i++) {
-            if (v_records[i]["종량제봉투사용대상"].indexOf("가정용") != -1
-                && v_records[i]["종량제봉투용도"].indexOf("생활쓰레기") != -1
-                && v_records[i]["종량제봉투종류"] == "규격봉투"
-                && v_records[i]["종량제봉투처리방식"].indexOf("소각용") != -1) {
-                let v_str = "<h3>" + v_records[i]["시도명"];
-                v_str += " | " + v_records[i]["시군구명"];
-                v_str += " | " + v_records[i]["10ℓ가격"];
+        // for (let i = 0; i < v_records.length; i++) {
+        //     if (v_records[i]["종량제봉투사용대상"].indexOf("가정용") != -1
+        //         && v_records[i]["종량제봉투용도"].indexOf("생활쓰레기") != -1
+        //         && v_records[i]["종량제봉투종류"] == "규격봉투"
+        //         && v_records[i]["종량제봉투처리방식"].indexOf("소각용") != -1) {
+        //         let v_str = "<h3>" + v_records[i]["시도명"];
+        //         v_str += " | " + v_records[i]["시군구명"];
+        //         v_str += " | " + v_records[i]["10ℓ가격"];
+        //         v_str += "</h3>";
 
-                v_content.innerHTML += v_str;
-            }
-        }
+        //         v_content.innerHTML += v_str;
+        //     }
+        // }
+
+        let v_keyword = document.querySelector("#inputRegion");
+        let v_selectLitter = document.querySelector("#selectLitter");
 
         function f_search() {
-            let v_keyword = document.querySelector("#inputRegion").value;
-            let v_str="";
+            let v_str = "";
             for (let i = 0; i < v_records.length; i++) {
-                if (v_records[i]["시도명"] == v_keyword
+                if (v_records[i]["시도명"].indexOf(v_keyword.value) != -1
                     && v_records[i]["종량제봉투사용대상"].indexOf("가정용") != -1
                     && v_records[i]["종량제봉투용도"].indexOf("생활쓰레기") != -1
                     && v_records[i]["종량제봉투종류"] == "규격봉투"
                     && v_records[i]["종량제봉투처리방식"].indexOf("소각용") != -1) {
                     v_str += "<h3>" + v_records[i]["시도명"];
                     v_str += " | " + v_records[i]["시군구명"];
-                    v_str += " | " + v_records[i]["10ℓ가격"]
+                    v_str += " | " + v_selectLitter.value + " : " + v_records[i][v_selectLitter.value];
                     v_str += "</h3>";
                 }
+            }
+            v_content.innerHTML = v_str;
+        }
+
+        f_search();
+
+        let isDirection = false;
+        const v_btnSort = document.querySelector("#btnSort");
+        function f_sort() {
+            isDirection = !isDirection;
+            let v_array = [];
+            let v_str = "";
+
+            for (let i = 0; i < v_records.length; i++) {
+                if (v_records[i]["시도명"].indexOf(v_keyword.value) != -1
+                    && v_records[i]["종량제봉투사용대상"].indexOf("가정용") != -1
+                    && v_records[i]["종량제봉투용도"].indexOf("생활쓰레기") != -1
+                    && v_records[i]["종량제봉투종류"] == "규격봉투"
+                    && v_records[i]["종량제봉투처리방식"].indexOf("소각용") != -1) {
+                    v_array.push(v_records[i]);
+                }
+            }
+
+            if(isDirection){
+                v_btnSort.innerHTML = "정렬▲";
+            } else{
+                v_btnSort.innerHTML = "정렬▼";
+            }
+
+            v_array.sort(function (a, b) {
+                if (isDirection){
+                    return a[v_selectLitter.value] - b[v_selectLitter.value];
+                } else{
+                    return b[v_selectLitter.value] - a[v_selectLitter.value];
+                }                
+            });
+
+            for (let i = 0; i < v_array.length; i++) {
+                v_str += "<h3>" + v_array[i]["시도명"];
+                v_str += " | " + v_array[i]["시군구명"];
+                v_str += " | " + v_selectLitter.value + " : " + v_array[i][v_selectLitter.value];
+                v_str += "</h3>";
             }
             v_content.innerHTML = v_str;
         }
