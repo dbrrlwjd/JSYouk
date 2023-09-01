@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방사형그래프</title>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+        <canvas id="myChart2"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../resources/js/myJs.js"></script>
+    <script>
+        const ctx = document.querySelector("#myChart");
+
+        // 특정 객체의 스텟을 표현하기에 적합
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['속도','지구력','골결정력','외모','패스'],
+                datasets: [{
+                    label: "손흥민",
+                    data: [1,1,2,3,4]
+                }]
+            },
+            options:{
+                sclae:{
+                    ticks:{
+                        stepSize:1.0
+                    }
+                },
+                scales:{
+                    r:{
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById("myChart2");
+
+        new Chart(ctx2, {
+            type: 'radar',
+            data: {
+                labels: ['속도','지구력','골결정력','외모','패스'],
+                datasets: [{
+                    label: "손흥민",
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(255,0,255,0.3)',
+                    pointRadius:0,
+                    data: [1,1,2,3,4]
+                },
+                {
+                    label: "홀란드",
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(255,0,0,0.3)',
+                    pointRadius:0,
+                    data: [3,4,2,3,5]
+                }]
+            },
+            options:{
+                sclae:{
+                    ticks:{
+                        stepSize:1.0
+                    }
+                },
+                scales:{
+                    r:{
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

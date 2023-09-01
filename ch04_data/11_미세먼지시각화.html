@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미세먼지 시각화</title>
+</head>
+
+<body>
+    <h3>2022년 미세먼지 경보이력</h3>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        let v_airData = JSON.parse(localStorage.getItem("airData"));
+        console.log(v_airData);
+        console.log(v_airData[0]);
+        let v_datas = {};
+        let v_labels = [];
+        let v_data = [];
+        for (let i = 0; i < v_airData.length; i++) {
+            if (v_labels.indexOf(v_airData[i]['districtName']) == -1) {
+                v_labels.push(v_airData[i]['districtName']);
+                v_data.push(0);
+            }
+        }
+        console.log(v_labels);
+
+        for (let i = 0; i < v_airData.length; i++) {
+            for (let k = 0; k < v_labels.length; k++) {
+                if (v_airData[i]['districtName'] == v_labels[k]) {
+                    v_data[k]++;
+                }
+            }
+        }
+
+        let v_color = []
+        for (let i = 0; i < v_labels.length; i++) {
+            v_color.push("rgba("
+                + Math.floor(Math.random() * 256) + ","
+                + Math.floor(Math.random() * 256) + ","
+                + Math.floor(Math.random() * 256)
+                + ",0.3)");
+        }
+
+        for (let i = 0; i < v_labels.length; i++) {
+            v_datas[v_labels[i]] = v_data[i];
+        }
+
+        for (let i = 0; i < v_data.length; i++) {
+            for (let j = 0; j < v_data.length; j++) {
+                if(v_data[i]>v_data[j]){
+                    let v_tempData = v_data[i];
+                    v_data[i] = v_data[j];
+                    v_data[j] = v_tempData;
+
+                    let v_tempLabels = v_labels[i];
+                    v_labels[i] = v_labels[j];
+                    v_labels[j] = v_tempLabels;
+                }
+            }
+        }        
+        
+        console.log(v_data);
+        console.log(v_labels);
+
+        new Chart(ctx, {
+            type: 'bar', //bar, line, pie, doughnut, rader
+            data: {
+                labels: v_labels,
+                datasets: [{
+                    label: '2022년 미세먼지 경보이력',
+                    data: v_data,
+                    borderWidth: 1,
+                    backgroundColor: v_color
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

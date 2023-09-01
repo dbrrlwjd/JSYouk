@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선수능력치</title>
+</head>
+
+<body>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"
+        integrity="sha512-HX+/SvM7094YZEKOCtG9EyjRYvK8dKlFhdYAnVCGNxMkA59BZNSZTZrqdDlLXp0O6/NjDb1uKnmutUeuzHb3iQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let v_ajax = new XMLHttpRequest();
+        v_ajax.open("GET", "./10_player.xml");
+        v_ajax.onload = () => {
+            console.log(v_ajax.response);
+            let v_x2js = new X2JS();
+            let v_json = v_x2js.xml_str2json(v_ajax.response);
+            console.log(v_json);
+
+            const ctx = document.getElementById('myChart');
+            let v_labels = [];
+            let v_datasets = [];
+
+            v_labels = Object.keys(v_json['xml']['players']['player'][0]['stat']);
+            for (let i = 0; i < v_json['xml']['players']['player'].length; i++) {
+                let v_data = [];
+                for (let k = 0; k < v_labels.length; k++) {
+                    v_data.push(v_json['xml']['players']['player'][i]['stat'][v_labels[k]])
+                }
+                v_datasets.push({
+                    label: v_json['xml']['players']['player'][i]['name'],
+                    data: v_data
+                });
+            }
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: v_labels,
+                    datasets: v_datasets
+                },
+                options: {
+                    sclae: {
+                        ticks: {
+                            stepSize: 1.0
+                        }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        v_ajax.send();
+    </script>
+</body>
+
+</html>

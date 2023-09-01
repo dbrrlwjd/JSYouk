@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>종량제 시각화</title>
+</head>
+
+<body>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../resources/js/myJs.js"></script>
+    <script>
+        const ctx = document.querySelector("#myChart");
+        let v_ajax = new XMLHttpRequest();
+        v_ajax.open("GET", "./01_price.json");
+        v_ajax.onload = () => {
+            console.log(v_ajax.response);
+            let v_price = JSON.parse(v_ajax.response);
+            console.log(v_price);
+
+            let myData = {};
+            let v_records = v_price["records"];
+            let v_labels = ["서울", "인천", "부산", "세종"];
+            for (let i = 0; i < v_records.length; i++) {
+                for (let k = 0; k < v_labels.length; k++) {
+                    if (v_records[i]["시도명"].indexOf(v_labels[k]) != -1
+                        && v_records[i]["종량제봉투사용대상"].indexOf("가정용") != -1
+                        && v_records[i]["종량제봉투용도"].indexOf("생활쓰레기") != -1
+                        && v_records[i]["종량제봉투종류"] == "규격봉투"
+                        && v_records[i]["종량제봉투처리방식"].indexOf("소각용") != -1) {
+                        myData[v_labels[k]] = {
+                            "5ℓ": v_records[i]["5ℓ가격"],
+                            "10ℓ": v_records[i]["10ℓ가격"],
+                            "20ℓ": v_records[i]["20ℓ가격"]
+                        };
+                    }
+                }
+            }
+            console.log(myData);
+
+            let v_datasets = [];
+            let v_litter = Object.keys(myData["서울"]);
+            for (let i = 0; i < v_litter.length; i++) {
+                let v_temp = {}
+                v_temp["label"] = v_litter[i];
+                let v_tempArray = [];
+                for (let k = 0; k < v_labels.length; k++) {
+                    v_tempArray.push(myData[v_labels[k]][v_litter[i]]);
+                }
+                v_temp["data"] = v_tempArray;
+                v_temp["borderWidth"] = 1;
+                v_temp["backgroundColor"] = f_rgbColor();
+                v_datasets.push(v_temp);
+            }
+            
+            myChart = new Chart(ctx, {
+                type: 'bar', //bar, line, pie, doughnut, radar
+                data: {
+                    labels: v_labels,
+                    datasets: v_datasets
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        v_ajax.send();
+
+
+    </script>
+</body>
+
+</html>

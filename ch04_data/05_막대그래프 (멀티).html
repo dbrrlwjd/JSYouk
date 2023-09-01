@@ -16,10 +16,10 @@
     <script src="../resources/js/myJs.js"></script>
     <script>
         // 05_score.csv파일을 ajax통신으로 불러와야 한다.
-        let myChart;
-        let v_scores = [];
         let v_ajax = new XMLHttpRequest();
         const ctx = document.getElementById('myChart');
+        let myChart;
+        let v_scores = [];
 
         v_ajax.open("GET", "./05_score.csv");
         v_ajax.onload = () => {
