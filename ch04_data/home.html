@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            width: 800px;
+            height: 1000px;
+            margin: auto;
+
+            display: flex;
+        }
+
+        .container>div:nth-child(1) {
+            width: 20%;
+        }
+
+        .container>div:nth-child(2) {
+            width: 60%;
+        }
+
+        .container>div:nth-child(3) {
+            width: 20%;
+        }
+
+        .logIn {
+            padding: 20px;
+        }
+
+        .logIn>div {
+            display: flex;
+        }
+
+        .logIn>div>a {
+            color: black;
+            font-size: 10px;
+            text-decoration: none;
+        }
+
+        .search input {
+            width: 80%;
+            margin-right: 10px;
+        }
+
+        .search>div {
+            display: flex;
+            justify-content: center;
+        }
+
+        #result {
+            border: 1px solid black;
+            overflow: scroll;
+        }
+
+        div {
+            border: 1px solid red;
+        }
+    </style>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
+
+    <script src="./yugioh.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <!-- <div class="logIn">
+                <div>
+                    <div>
+                        아이디<input type="text">
+                        비밀번호<input type="password">
+                    </div>
+                    <button>로그인</button>
+                </div>
+
+                <div>
+                    <a href="">회원가입</a>
+                    <a href="">아이디/비밀번호 찿기</a>
+                </div>
+            </div> -->
+            <div class="deck">
+
+            </div>
+        </div>
+        <div class="search">
+            <div>
+                <input type="text">
+                <button onclick="f_search()">검색</button>
+            </div>
+            <div id="result">
+
+            </div>
+        </div>
+        <div class="info">
+
+        </div>
+    </div>
+
+    <script>
+        // const v_input = document.querySelector('input');
+        // const v_result = document.querySelector("#result");
+        // let cardDB = {};
+        // let cardData = [];
+
+        // let v_ajax = new XMLHttpRequest();
+        // v_ajax.open("GET", "https://db.ygoprodeck.com/api/v7/cardinfo.php");
+        // v_ajax.onload = function () {
+        //     cardDB = JSON.parse(v_ajax.response);
+        //     cardData = cardDB['data'];
+        // }
+        // v_ajax.send();
+        // console.log(v_result);
+        // function f_search() {
+        //     v_result.innerHTML = '';
+        //     for (let i = 0; i < cardData.length; i++) {
+        //         if (cardData[i]['name'].indexOf(v_input.value) != -1) {
+        //             f_slot(cardData[i]['card_images'][0]['image_url']);
+        //         }
+        //     }
+        // }
+
+        // function f_slot(v_src) {
+        //     // let v_img = document.createElement('img');
+        //     // v_img.src = v_src;
+        //     // v_result.innerHTML += v_img;
+        //     v_result.innerHTML += "<img width='100' height='150' src='" + v_src + "'>";
+        // }
+    </script>
+</body>
+
+</html>
