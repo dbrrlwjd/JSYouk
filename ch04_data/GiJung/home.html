@@ -28,18 +28,8 @@
             width: 510px;
         }
 
-        .logIn {
-            padding: 20px;
-        }
-
-        .logIn>div {
-            display: flex;
-        }
-
-        .logIn>div>a {
-            color: black;
-            font-size: 10px;
-            text-decoration: none;
+        .scroll{
+            overflow-y: auto;
         }
 
         .search input {
@@ -49,9 +39,9 @@
 
         #result {
             width: 100%;
-            height: 97%;
+            height: 98%;
             border: 1px solid black;
-            overflow-y: scroll;
+            overflow-y: auto;
         }
 
         #loading {
@@ -92,28 +82,28 @@
         div {
             border: 1px solid red;
         }
+
+        .decks{
+            display: inline-block;
+            margin: 10px;
+            border: 0;
+        }
+
+        .decks p{
+            text-align: center;
+        }
+
+        .hidden{
+            display: none;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div>
-            <!-- <div class="logIn">
-                <div>
-                    <div>
-                        아이디<input type="text">
-                        비밀번호<input type="password">
-                    </div>
-                    <button>로그인</button>
-                </div>
-
-                <div>
-                    <a href="">회원가입</a>
-                    <a href="">아이디/비밀번호 찿기</a>
-                </div>
-            </div> -->
-            <div class="info">
-
+            <div class="info scroll">
+                
             </div>
         </div>
 
@@ -129,16 +119,34 @@
 
         <div class="deck">
             <div>
+                <input style="width: 48%;" type="text" placeholder="덱 이름">
+                <input style="width: 48%;" type="text" placeholder="덱 타입">
+            </div>
+            
+            <div>
                 <p>메인 덱</p>
             </div>
+
             <div>
                 <p>엑스트라 덱</p>
             </div>
+
             <div>
                 <p>사이드 덱</p>
             </div>
+
+            <button onclick="f_five()">5장 뽑기</button>
+            <button onclick="f_draw()">드로우</button>
             <button onclick="f_reset()">리셋</button>
             <button onclick="f_save()">저장</button>
+
+            <div class="scroll" style="height: 142px;">
+
+            </div>
+
+            <div class="scroll" style="height: 442px;">
+
+            </div>
         </div>
     </div>
 
