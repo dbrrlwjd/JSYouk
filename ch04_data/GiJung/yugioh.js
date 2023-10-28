@@ -245,6 +245,7 @@ function f_draw() {
             }
         });
         v_deck.children[8].appendChild(v_img);
+        v_deck.children[8].scrollTop = v_deck.children[8].scrollHeight;
     }
 }
 
@@ -310,6 +311,7 @@ function f_save() {
         v_div.appendChild(v_p);
         v_div.classList.add("decks");
         v_deck.children[9].appendChild(v_div);
+        v_deck.children[9].scrollTop = v_deck.children[9].scrollHeight;
         decks.push({ "deckId": decks.length > 0 ? decks[decks.length]["deckId"]+1 : 1,
             "deckName": deckName, "deckCetegory": v_deck.children[0].children[1].value, "deck": tmpDeck })
         //localStorage.setItem("decks", decks);
